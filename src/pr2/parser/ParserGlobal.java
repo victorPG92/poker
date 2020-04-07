@@ -1,7 +1,7 @@
 package pr2.parser;
 
-import pr2.negocio.ManoSimple;
-import pr2.negocio.rangos.ManoRango;
+import poker.negocio.dtos.ManoRango;
+import poker.negocio.dtos.manojugador.ManoSimple;
 
 /**
  * Parser que ahce de fachada de los otros

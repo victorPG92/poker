@@ -3,11 +3,11 @@ package pr1.entrada;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import pr1.negocio.cartas.carta.Carta;
-import pr1.negocio.cartas.carta.Palo;
-import pr1.util.ParTipo;
-import pr1.util.mesas.CartasJugador;
-import pr1.util.mesas.CartasMesa;
+import poker.negocio.dtos.cartas.Carta;
+import poker.negocio.dtos.cartas.Palo;
+import poker.negocio.dtos.mesas.CartasJugador;
+import poker.negocio.dtos.mesas.CartasMesa;
+import poker.negocio.util.ParTipo;
 
 /**
  * 

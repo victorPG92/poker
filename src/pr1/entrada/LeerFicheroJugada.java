@@ -1,6 +1,6 @@
 package pr1.entrada;
 
-import pr1.constantes.*;
+import poker.negocio.constantes.ConstantesPR1;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -142,8 +142,8 @@ public class LeerFicheroJugada
 	public static LeerFicheroJugada getInst()
 	{
 		String n;
-		if(Constantes.FICHERO_ENTRADA!=null) 	n= Constantes.FICHERO_ENTRADA;//+ ".txt"
-		else 									n= Constantes.NOMBRE_FICHERO_ENTRADA;
+		if(ConstantesPR1.FICHERO_ENTRADA!=null) 	n= ConstantesPR1.FICHERO_ENTRADA;//+ ".txt"
+		else 									n= ConstantesPR1.NOMBRE_FICHERO_ENTRADA;
 		if(inst==null)inst = new LeerFicheroJugada(n);
 		return inst;
 	}

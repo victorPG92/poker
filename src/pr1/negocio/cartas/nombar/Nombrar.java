@@ -1,6 +1,6 @@
 package pr1.negocio.cartas.nombar;
 
-import pr1.negocio.cartas.carta.Carta;
+import poker.negocio.dtos.cartas.Carta;
 /**
  * Obtiene el nombre de la imagen que representa la carta
  * @author victor

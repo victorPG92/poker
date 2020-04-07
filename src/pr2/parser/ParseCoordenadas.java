@@ -1,6 +1,6 @@
 package pr2.parser;
 
-import pr2.negocio.rangos.PosicionXY;
+import poker.negocio.util.PosicionXY;
 
 public class ParseCoordenadas
 {

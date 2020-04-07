@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
-import pr1.negocio.cartas.carta.Carta;
+import poker.negocio.dtos.cartas.Carta;
 import pr1.negocio.cartas.nombar.Nombrar;
 import pr4.FactSAImpJuegoConAlgoritmo;
 import pr4.FactSAImpJuegoNormal;

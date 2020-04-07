@@ -2,7 +2,7 @@ package pr4;
 
 import java.util.ArrayList;
 
-import pr1.negocio.cartas.carta.Carta;
+import poker.negocio.dtos.cartas.Carta;
 
 public interface MazoOpt 
 {

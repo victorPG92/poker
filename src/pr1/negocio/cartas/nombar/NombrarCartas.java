@@ -1,7 +1,7 @@
 package pr1.negocio.cartas.nombar;
 
-import pr1.negocio.cartas.carta.Carta;
-import pr1.negocio.cartas.carta.Palo;
+import poker.negocio.dtos.cartas.Carta;
+import poker.negocio.dtos.cartas.Palo;
 
 public class NombrarCartas extends Nombrar
 {

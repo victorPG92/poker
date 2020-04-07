@@ -1,10 +1,11 @@
 package pr2.negocio.ranking;
 
-import pr2.constantes.Constantes;
+import poker.negocio.constantes.ConstantesPR2;
+import poker.negocio.dtos.ManoPrio;
+import poker.negocio.dtos.Rango;
+import poker.negocio.dtos.Ranking;
 import pr2.fichero.LeerFichero;
-import pr2.negocio.rangos.Rango;
 import pr2.parser.ParseaLIneaRanking;
-import pr2.util.ManoPrio;
 
 /**
  * Lee el ranking de un fichero de texto
@@ -16,8 +17,8 @@ public class LeeRango
 	
 	 public static Ranking dameRanking()
 	 {
-		 System.out.println("lee rango "+ Constantes.FICHERO_RANGO);
-		 LeerFichero lf= new  LeerFichero(Constantes.FICHERO_RANGO);
+		 System.out.println("lee rango "+ ConstantesPR2.FICHERO_RANGO);
+		 LeerFichero lf= new  LeerFichero(ConstantesPR2.FICHERO_RANGO);
 		 
 		 Ranking r = new Ranking();
 		 

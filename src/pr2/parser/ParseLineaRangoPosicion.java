@@ -3,9 +3,9 @@ package pr2.parser;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import pr2.negocio.Posicion;
-import pr2.negocio.rangos.Rango;
-import pr2.util.Tablas;
+import poker.negocio.dtos.Posicion;
+import poker.negocio.dtos.Rango;
+import poker.negocio.util.Tablas;
 /**
  * modificar segun formato de fichero
  * ahora el formato sera 

@@ -2,8 +2,8 @@ package pr2.parser;
 
 import java.util.StringTokenizer;
 
-import pr2.negocio.rangos.ManoRango;
-import pr2.util.ManoPrio;
+import poker.negocio.dtos.ManoPrio;
+import poker.negocio.dtos.ManoRango;
 
 /**
  * Parsea una linea de un ranking con el formato establecido 

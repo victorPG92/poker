@@ -3,7 +3,7 @@ package pr1.entrada;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-import pr1.constantes.Constantes;
+import poker.negocio.constantes.ConstantesPR1;
 
 /**
  * 
@@ -29,8 +29,8 @@ public class EscribirFicheroJugada
 	 private EscribirFicheroJugada()
 	 {
 		
-		 if(Constantes.FICHERO_SALIDA!=null)  	nombre = Constantes.FICHERO_SALIDA;
-		 else 					nombre = Constantes.NOMBRE_FICHERO_SALIDA;
+		 if(ConstantesPR1.FICHERO_SALIDA!=null)  	nombre = ConstantesPR1.FICHERO_SALIDA;
+		 else 					nombre = ConstantesPR1.NOMBRE_FICHERO_SALIDA;
 		 
 		 open();
 		 

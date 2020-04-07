@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import pr1.negocio.Mano.manos.Mano;
-import pr1.negocio.buscarJugadas.EncontrarMejorJugada;
-import pr1.negocio.cartas.carta.Carta;
+import poker.negocio.algoritmos.buscarjugadas.EncontrarMejorJugada;
+import poker.negocio.dtos.cartas.Carta;
+import poker.negocio.dtos.manos.Mano;
 import pr4.presentacion.ventanas.VentanaJuegoConAlgoritmo;
 
 public class MesaJuegoCaribeanConAlgoritmo extends MesaJuegoCaribeanNormal {

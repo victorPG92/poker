@@ -1,17 +1,17 @@
 package pr2.negocio.rangos;
 
-import pr2.constantes.Constantes;
+import poker.negocio.constantes.ConstantesPR2;
+import poker.negocio.dtos.ManoPrio;
+import poker.negocio.dtos.Ranking;
 import pr2.fichero.LeerFichero;
-import pr2.negocio.ranking.Ranking;
 import pr2.parser.ParseaLIneaRanking;
-import pr2.util.ManoPrio;
 
 public class LeeRangoPosicion 
 {
 	
 	 public static Ranking daemRango()
 	 {
-		 LeerFichero lf= new  LeerFichero(Constantes.FICHERO_RANGO);
+		 LeerFichero lf= new  LeerFichero(ConstantesPR2.FICHERO_RANGO);
                  Ranking r =  new Ranking();
 		 
         @SuppressWarnings("unused")

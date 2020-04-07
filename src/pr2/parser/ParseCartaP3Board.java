@@ -2,9 +2,9 @@ package pr2.parser;
 
 import java.util.ArrayList;
 
-import pr1.negocio.cartas.carta.Carta;
-import pr1.negocio.cartas.carta.Palo;
-import pr2.negocio.ManoSimple;
+import poker.negocio.dtos.cartas.Carta;
+import poker.negocio.dtos.cartas.Palo;
+import poker.negocio.dtos.manojugador.ManoSimple;
 
 
 /**

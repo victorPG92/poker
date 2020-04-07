@@ -3,7 +3,7 @@ package pr2.parser;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import pr2.negocio.Posicion;
+import poker.negocio.dtos.Posicion;
 
 
 /**

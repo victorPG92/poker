@@ -1,6 +1,6 @@
 package pr2.parser;
 
-import pr2.negocio.Posicion;
+import poker.negocio.dtos.Posicion;
 
 
 /**

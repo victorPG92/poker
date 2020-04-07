@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import pr2.constantes.Constantes;
+import poker.negocio.constantes.ConstantesPR2;
 
 
 /**
@@ -143,7 +143,7 @@ public class LeerFichero
 	public static LeerFichero getInst()
 	{
 		String n;
-		n= Constantes.FICHERO_RANGO ;
+		n= ConstantesPR2.FICHERO_RANGO ;
 		
 		if(inst==null)inst = new LeerFichero(n);
 		return inst;
