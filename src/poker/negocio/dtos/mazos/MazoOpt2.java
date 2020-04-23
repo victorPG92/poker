@@ -73,7 +73,7 @@ public class MazoOpt2 implements MazoOpt
 	 */
 	public ArrayList<Carta> dameNCartas(int n)
 	{
-		 ArrayList<Carta> a = new  ArrayList<Carta>();
+		 ArrayList<Carta> a = new  ArrayList<>();
 		 for(int i=0;i<n;i++)
 			 a.add(dameCartaAleatoria());
 		

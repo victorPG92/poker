@@ -2,6 +2,7 @@ package poker.negocio.dtos.mazos;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 import poker.negocio.dtos.cartas.Carta;
@@ -11,9 +12,13 @@ public class MazoOpt1 implements MazoOpt
 {
 	private LinkedList<Carta> mazo;
 	
+	private List<Carta> cartasUsadas;
+
+	
 	public MazoOpt1()
 	{
 		mazo = new LinkedList<>();
+		cartasUsadas = new LinkedList<>();
 		for(Palo p : Palo.values())
 		{
 			for(int i=1;i<14;i++)//cambiado
@@ -28,7 +33,9 @@ public class MazoOpt1 implements MazoOpt
 	{
 		Random r= new Random(System.currentTimeMillis());
 		int n= r.nextInt(mazo.size());
-		return mazo.remove(n);
+		Carta carta = mazo.remove(n);
+		cartasUsadas.add(carta);
+		return carta;
 		
 	}
 

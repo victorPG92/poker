@@ -48,25 +48,25 @@ public class FactoriaMano
 	}
 	*/
 	
-	public Mano creaMano(ArrayList<Carta> mano,ManoEnum me)
+	public Mano creaMano(ArrayList<Carta> cartas,ManoEnum me)
 	{
 		//System.out.println("fabricar "+ me.getEsp() +" con  de "+hc1+" y "+ hc2) ;
 		
-		Mano m = null;
+		Mano mano = null;
 		
-		if	   (me.equals(ManoEnum.pair)) 			 m = new Pareja			(mano);
-		else if(me.equals(ManoEnum.three_of_a_kind)) m = new Trio			(mano);
-		else if(me.equals(ManoEnum.two_pair)) 		 m = new DoblesParejas	(mano);
-		else if(me.equals(ManoEnum.straight)) 		 m = new Escalera		(mano);
-		else if(me.equals(ManoEnum.flush)) 			 m = new Color			(mano);
-		else if(me.equals(ManoEnum.full_house)) 	 m = new Full			(mano);
-		else if(me.equals(ManoEnum.four_of_a_kind))  m = new Poker			(mano);
-		else if(me.equals(ManoEnum.straight_flush))  m = new EscaleraColor	(mano);
-		else if(me.equals(ManoEnum.high_card)) 		 m = new CartaMasAlta	(mano);
+		if	   (me.equals(ManoEnum.pair)) 			 mano = new Pareja			(cartas);
+		else if(me.equals(ManoEnum.three_of_a_kind)) mano = new Trio			(cartas);
+		else if(me.equals(ManoEnum.two_pair)) 		 mano = new DoblesParejas	(cartas);
+		else if(me.equals(ManoEnum.straight)) 		 mano = new Escalera		(cartas);
+		else if(me.equals(ManoEnum.flush)) 			 mano = new Color			(cartas);
+		else if(me.equals(ManoEnum.full_house)) 	 mano = new Full			(cartas);
+		else if(me.equals(ManoEnum.four_of_a_kind))  mano = new Poker			(cartas);
+		else if(me.equals(ManoEnum.straight_flush))  mano = new EscaleraColor	(cartas);
+		else if(me.equals(ManoEnum.high_card)) 		 mano = new CartaMasAlta	(cartas);
 		
 		
 		
-		return 	m;
+		return 	mano;
 	}
 
 }
