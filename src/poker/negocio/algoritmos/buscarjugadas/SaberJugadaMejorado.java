@@ -15,19 +15,11 @@ import poker.negocio.util.ordenar.OrdenarCartas;
  * Dadas 5 cartas, permite saber que mano  disponemos
  *
  */
-public class SaberJugada 
+public class SaberJugadaMejorado 
 {
 	
 	private ArrayList<Carta> cartas;
 	
-	private boolean hayPareja;
-	private boolean hayDoblePareja;
-	private boolean hayTrio;
-	private boolean hayFull;
-	private boolean hayPoker;
-	private boolean hayColor;
-	private boolean hayEscalera;
-	private boolean hayEscaleraColor;
 	
 		
 	private int hc1;
@@ -36,79 +28,86 @@ public class SaberJugada
 	private int hc2;
 	
 	
-	
+	FlagsSabeJugada flags= new FlagsSabeJugada();
 	private Mano mano;
 	
+	public SaberJugadaMejorado()
+	{
+		
+	}
 	
-	
-	public SaberJugada(ArrayList<Carta> cartasJugador)
+	public Mano dameMejorJugada(ArrayList<Carta> cartasJugador)
 	{
 		if(cartasJugador.size()==5)
 		{
 			this.cartas=cartasJugador;
 			
-			hayPareja=false;
-			hayTrio=false;
-			hayPoker=false;
-			hayColor=false;
-			hayEscalera=false;
+			//FlagsSabeJugada flags= new FlagsSabeJugada();
 			
 			
+			comprobarIguales(flags);
+			comprobarColor(flags);
 			
-			comprobarIguales();
-			comprobarColor();
-			
-			if(!(hayPareja || hayTrio || hayPoker))//ya calculado 
+			if(!(flags.isHayPareja() || flags.isHayTrio() || flags.isHayPoker()))//ya calculado 
 				comprobarEscalera();
 			
 			
-			if(hayPareja && hayTrio) 	hayFull=true;
-			if(hayEscalera && hayColor) hayEscaleraColor=true;
+			if(flags.isHayPareja() && flags.isHayTrio()) 	flags.setHayFull(true);
+			if(flags.isHayEscalera() && flags.isHayColor()) flags.setHayEscaleraColor(true);
 			
 			//System.out.println("parsea  algo con  de "+hc1+" y "+ hc2) ;
 			
-			FactoriaMano f = new FactoriaMano();
-			
-			//metodo antiguo
-			/*
-			if(hayEscaleraColor)	mano = f.creaMano(ManoEnum.straight_flush, 	hc1,hc2);
-			else if(hayPoker)		mano = f.creaMano(ManoEnum.four_of_a_kind, 	hc1,hc2);
-			else if(hayFull)		mano = f.creaMano(ManoEnum.full_house, 		hc1,hc2);
-			else if(hayColor)		mano = f.creaMano(ManoEnum.flush, 			hc1,hc2);
-			else if(hayEscalera)	mano = f.creaMano(ManoEnum.straight, 		hc1,hc2);
-			else if(hayTrio)		mano = f.creaMano(ManoEnum.three_of_a_kind, hc1,hc2);
-			else if(hayDoblePareja)	mano = f.creaMano(ManoEnum.two_pair, 		hc1,hc2);
-			else if(hayPareja)		mano = f.creaMano(ManoEnum.pair, 			hc1,hc2);
-			else 					mano = f.creaMano(ManoEnum.high_card, 		hc1,hc2);
-			*/
-			
-			//metodo mejor para comparar
-			if(hayEscaleraColor)	mano = f.creaMano(cartas, 	ManoEnum.straight_flush);
-			else if(hayPoker)		mano = f.creaMano(cartas, 	ManoEnum.four_of_a_kind);
-			else if(hayFull)		mano = f.creaMano(cartas, 		ManoEnum.full_house);
-			else if(hayColor)		mano = f.creaMano(cartas, 			ManoEnum.flush);
-			else if(hayEscalera)	mano = f.creaMano(cartas, 		ManoEnum.straight);
-			else if(hayTrio)		mano = f.creaMano(cartas, ManoEnum.three_of_a_kind);
-			else if(hayDoblePareja)	mano = f.creaMano(cartas, 		ManoEnum.two_pair);
-			else if(hayPareja)		mano = f.creaMano(cartas, 			ManoEnum.pair);
-			
-			//else if(proyectoEscalera)		mano = f.creaMano(cartas, 			ManoEnum.proyectoEscalera);
-			//else if(proyectoEscalera)		mano = f.creaMano(cartas, 			ManoEnum.proyectoEscalera);
-			//else if(proyectoColor)		mano = f.creaMano(cartas, 			ManoEnum.proyectoColor);
-						
-			else 					mano = f.creaMano(cartas, 		ManoEnum.high_card);
-			
+			creaManoSegunFlags(flags);
+				
 		}
 		else System.err.println("Mano mal hecha");
+		
+		return mano;
 	}
 	
 	
+	
+	private Mano creaManoSegunFlags(FlagsSabeJugada flags)
+	{
+		FactoriaMano f = new FactoriaMano();
+		
+		//metodo antiguo
+		/*
+		if(hayEscaleraColor)	mano = f.creaMano(ManoEnum.straight_flush, 	hc1,hc2);
+		else if(hayPoker)		mano = f.creaMano(ManoEnum.four_of_a_kind, 	hc1,hc2);
+		else if(hayFull)		mano = f.creaMano(ManoEnum.full_house, 		hc1,hc2);
+		else if(hayColor)		mano = f.creaMano(ManoEnum.flush, 			hc1,hc2);
+		else if(hayEscalera)	mano = f.creaMano(ManoEnum.straight, 		hc1,hc2);
+		else if(hayTrio)		mano = f.creaMano(ManoEnum.three_of_a_kind, hc1,hc2);
+		else if(hayDoblePareja)	mano = f.creaMano(ManoEnum.two_pair, 		hc1,hc2);
+		else if(hayPareja)		mano = f.creaMano(ManoEnum.pair, 			hc1,hc2);
+		else 					mano = f.creaMano(ManoEnum.high_card, 		hc1,hc2);
+		*/
+		
+		//metodo mejor para comparar
+		if(flags.isHayEscaleraColor())	mano = f.creaMano(cartas, 	ManoEnum.straight_flush);
+		else if(flags.isHayPoker())		mano = f.creaMano(cartas, 	ManoEnum.four_of_a_kind);
+		else if(flags.isHayFull())		mano = f.creaMano(cartas, 		ManoEnum.full_house);
+		else if(flags.isHayColor())		mano = f.creaMano(cartas, 			ManoEnum.flush);
+		else if(flags.isHayEscalera())	mano = f.creaMano(cartas, 		ManoEnum.straight);
+		else if(flags.isHayTrio())		mano = f.creaMano(cartas, ManoEnum.three_of_a_kind);
+		else if(flags.isHayDoblePareja())	mano = f.creaMano(cartas, 		ManoEnum.two_pair);
+		else if(flags.isHayPareja())		mano = f.creaMano(cartas, 			ManoEnum.pair);
+		
+		//else if(proyectoEscalera)		mano = f.creaMano(cartas, 			ManoEnum.proyectoEscalera);
+		//else if(proyectoEscalera)		mano = f.creaMano(cartas, 			ManoEnum.proyectoEscalera);
+		//else if(proyectoColor)		mano = f.creaMano(cartas, 			ManoEnum.proyectoColor);
+					
+		else 					mano = f.creaMano(cartas, 		ManoEnum.high_card);
+
+		return mano;
+	}
 	
 	/**
 	 * Comprueba si existen cartas de misma numeracion
 	 * el objetivo es saber si tenemos pareja, trio ,full o poker,
 	 */
-	public void comprobarIguales()
+	public void comprobarIguales(FlagsSabeJugada flags)
 	{
 		int n;
 		int i=0;
@@ -131,17 +130,17 @@ public class SaberJugada
 				
 				if(i==2)
 				{
-					if(!hayPareja ) //!hayTrio puesto despues de que full no coja bien el valor de trio y pareja
+					if(!flags.isHayPareja() ) //!hayTrio puesto despues de que full no coja bien el valor de trio y pareja
 					{
-						hayPareja=true;
-						if(!hayTrio)hc1 = c.getNum();
+						flags.setHayPareja(true);
+						if(!flags.isHayTrio())hc1 = c.getNum();
 						else 		hc2 = c.getNum();
 						
 					}
-					else if(hayPareja && c.getNum()!=hc1) //
+					else if(flags.isHayPareja() && c.getNum()!=hc1) //
 					{
 						
-						hayDoblePareja=true;
+						flags.setHayDoblePareja(true);
 						int hc = c.getNum();
 						if(hc ==1 || (hc > hc1  && hc1!=1))
 						{
@@ -164,11 +163,11 @@ public class SaberJugada
 				}
 				else if(i == 3 )
 				{	
-					hayTrio=true;
-					if(hayPareja)hc2=hc1;
+					flags.setHayTrio(true);
+					if(flags.isHayPareja())hc2=hc1;
 					hc1= c.getNum();
 				}
-				else if(i == 4 ){	hayPoker=true;hc1= c.getNum();}
+				else if(i == 4 ){	flags.setHayPoker(true);hc1= c.getNum();}
 			}
 		}
 		
@@ -178,7 +177,7 @@ public class SaberJugada
 	 * Comprueba si las cartas son del mismo palo
 	 * el objetivo es saber si tenemos color (se usa para la escalera de color)
 	 */
-	public void comprobarColor()
+	public void comprobarColor(FlagsSabeJugada flags)
 	{
 		
 		boolean posible = true;
@@ -206,7 +205,7 @@ public class SaberJugada
 		if(posible && i==5)
 		{
 			hc1=max;
-			hayColor=true;
+			flags.setHayColor(true);
 			//System.out.println("color con "+hc1);
 		}
 		
@@ -294,7 +293,7 @@ public class SaberJugada
 				
 		if(esc==5)
 		{
-			hayEscalera=true;
+			flags.setHayEscalera(true);
 			hc1=cartasOrdenadas.get(cartasOrdenadas.size()-1).getNum();
 		}
 		
@@ -334,7 +333,7 @@ public class SaberJugada
 					
 			if(esc==5)
 			{
-				hayEscalera=true;
+				flags.setHayEscalera(true);
 				hc1=manoTemp1.get(cartasOrdenadas.size()-1).getNum();
 			}
 		}
